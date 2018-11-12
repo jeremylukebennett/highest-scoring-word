@@ -12,24 +12,47 @@ function high(sentence){
     }
 
     // console.log('lettersObject',lettersObject);
-    // console.log(sentence.split(" "));
+    console.log("this should be what? ", sentence.split(" "));
     console.log('lettersObject',lettersObject);
 
     sentenceWords = sentence.split(" ");
-        console.log('sentenceWords',sentenceWords);
+    console.log('sentenceWords',sentenceWords);
+    let totalTally = 0;
+    let highestWord;
+    
+    for(i = 0; i < sentenceWords.length; i++) {
+        
+        let wordLetters = sentenceWords[i].split("");
+        // Now wordLetters is an array of each letter in the current word looping through
+        let currentTally = 0;
+        
+        for(j = 0; j < wordLetters.length; j++) {
+            
 
-        for(i = 0; i < sentenceWords.length; i++) {
+            console.log("The current word is: ", wordLetters);
+            console.log("Letter ", wordLetters[j], " = " , lettersObject[wordLetters[j]]);
 
-            let wordLetters = sentenceWords[i].split("");
-            console.log('wordLetters',wordLetters[i]);
+            currentTally += lettersObject[wordLetters[j]];
 
-            console.log("Whats this? " + lettersObject[wordLetters[i]])
+            // totalTally += lettersObject[wordLetters[j]];
 
-
+            console.log('currentTally',currentTally);
+            if(currentTally > totalTally) {
+                totalTally = currentTally;
+                highestWord = wordLetters;
+            }
         }
 
+        console.log('totalTally',totalTally);
+        
+        wordLetters = wordLetters.join("");
+        
+        console.log('Highest word is: ',wordLetters);
+        
+    }
+    
 
-    // Now I need to break up each word in the string, then break up each letter in each word, tally up its value and return the highest.
+    // Now I need to break up each word in the string, then break up each letter in each word, totalTally up its value and return the highest.
 
 
 
@@ -40,4 +63,4 @@ function high(sentence){
 
 }
 
-high("This is a test");
+high("Here is another");
